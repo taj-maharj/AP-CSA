@@ -10,7 +10,7 @@ public class Conditionals{
         if((negative)&&(a<0 && b<0)){
             return true;
         }
-        else if(a!=b){
+        else if(!(negative)&&((a<0 && b>0)||(a>0 && b<0))){
             return true;
         }
         return false;
@@ -24,6 +24,7 @@ public class Conditionals{
                 }
                 return false;
             }
+            return true;
         }
         return false;
     }
@@ -64,12 +65,30 @@ public class Conditionals{
     }
     public static void main(String[] args){
         Conditionals con = new Conditionals();
-        System.out.println(con.chimpTrouble(false, false));
-        System.out.println(con.negPos(1, 1, false));
-        System.out.println(con.pickUpPhone(true, true, false));
-        System.out.println(con.setAlarm(3, false));
-        System.out.println(con.onesDigitSame(103, 33,3));
-        System.out.println("The winning card is:" + con.blackjack(20, 18));
 
+        System.out.println("\nchimpTrouble");
+        System.out.println(con.chimpTrouble(true, true));
+        System.out.println(con.chimpTrouble (false, false));
+        System.out.println(con.chimpTrouble (true, false));
+        System.out.println(con.chimpTrouble (false, true));
+
+        System.out.println("\nnegPos");
+        System.out.println(con.negPos(1, -1, false));
+        System.out.println(con.negPos (-1, 1, false));
+        System.out.println(con.negPos(1, 1, false));
+        System.out.println(con.negPos (-1, -1, false));
+        System.out.println(con.negPos (-4, -5, true));
+        System.out.println(con.negPos (-4, 5, true));
+        System.out.println(con.negPos (4, 5, true));
+        System.out.println(con.negPos (4, -5, true));
+
+       
+        System.out.println("\npickUpPhone");
+        System.out.println(con.pickUpPhone (false, false, true));
+        System.out.println(con.pickUpPhone (true, true, true));
+        System.out.println(con.pickUpPhone (true, true, false));
+        System.out.println(con.pickUpPhone (false, true, false));
+        System.out.println(con.pickUpPhone (true, false, false));
+        System.out.println(con.pickUpPhone (false, false, false));
     }
 }
