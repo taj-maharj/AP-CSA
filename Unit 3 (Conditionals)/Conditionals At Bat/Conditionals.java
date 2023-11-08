@@ -31,7 +31,7 @@ public class Conditionals{
 
     public String setAlarm(int day, boolean vacation){
         if(vacation){
-            if(day != 0 || day != 6){
+            if(day != 0 && day != 6){
                 return "10:00";
                 }
             else{
@@ -39,7 +39,7 @@ public class Conditionals{
             }
         }
 
-        if(day != 0 || day != 6){
+        else if(day != 0 && day != 6){
             return "7:00";
         }
         else{
@@ -54,11 +54,18 @@ public class Conditionals{
 
         return (a1==b1||a1==c1||b1==c1);
     }
+
     public int blackjack(int a, int b){
         if(a<=21 && b<=21){
             if(a>b){
                 return a;
             }
+            return b;
+        }
+        else if(a<=21){
+            return a;
+        }
+        else if(b<=21){
             return b;
         }
         return 0;
@@ -90,5 +97,30 @@ public class Conditionals{
         System.out.println(con.pickUpPhone (false, true, false));
         System.out.println(con.pickUpPhone (true, false, false));
         System.out.println(con.pickUpPhone (false, false, false));
+
+        System.out.println("\nsetAlarm");
+        System.out.println(con.setAlarm(1, false));
+        System.out.println(con.setAlarm(5, false));
+        System.out.println(con.setAlarm(0, false));
+        System.out.println(con.setAlarm(2, true));
+        System.out.println(con.setAlarm(4, true));
+        System.out.println(con.setAlarm(6, true));
+
+        System.out.println("\nonesDigitSame");
+        System.out.println(con.onesDigitSame(23, 19, 13));
+        System.out.println(con.onesDigitSame (23, 19, 12));
+        System.out.println(con.onesDigitSame (23, 19, 3));
+        System.out.println(con.onesDigitSame (423, 13, 3));
+        System.out.println(con.onesDigitSame (23, 29, 25));
+
+        System.out.println("\nBlackjack");
+        System.out.println(con.blackjack(19, 21));// → 21
+        System.out.println(con.blackjack(21, 19));// → 21
+        System.out.println(con.blackjack(19, 22));// → 19
+        System.out.println(con.blackjack(8, 8));// → 8
+        System.out.println(con.blackjack(25, 24));// → 0
+        System.out.println(con.blackjack(17, 9));// → 17
+        System.out.println(con.blackjack(12, 18));// → 18
+
     }
 }
