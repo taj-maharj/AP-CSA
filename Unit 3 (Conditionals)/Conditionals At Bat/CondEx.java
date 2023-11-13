@@ -46,23 +46,85 @@ public class CondEx{
     }
 
     public boolean makeBenches(int small, int big, int goal){
-        /*We want to make a row of benches that is goal feet long. We have a number of small benches (1 foot each) and big benches (5 feet each). 
-        Return true if it is possible to make the goal by choosing from the given benches.  You do not have to use all of the benches, just return true if you have at least enough. */
-        if(goal%5!=0){
-            return (small>=goal);
+        if(big == 0){
+            return small>=goal;
         }
+        else if(small == 0){
+            return goal%5==0 && (double) goal/5<big;
+        }
+        else if(goal/5<=big && goal%5 <= small){
+            return true;
+        }
+        
+        return false;
+
+
+
+
+
+        // if(small >= goal){
+        //     return true;
+        // }
+        // else if(goal%5==0 && big>=goal/5){
+        //     return true;
+        // }
+        // else if(goal - (big*5) <= small){
+        //     return true;
+        // }
+        // return false;
+
+
+
+        // int a = goal;
+
+        // if(big != 0){
+        //     a = goal / 5;
+        // } else if(small == a){
+        //         return true;
+        // }
+
+        // if(a <= big && goal - a * 5 <= small) {
+        //     return true;
+        // } else if(goal - big * 5 <= small && goal - big * 5 > 0){
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+
+        // /*We want to make a row of benches that is goal feet long. We have a number of small benches (1 foot each) and big benches (5 feet each). 
+        // Return true if it is possible to make the goal by choosing from the given benches.  You do not have to use all of the benches, just return true if you have at least enough. */
+        // int a = goal%5;
+        // int b = goal/5;
+        
+        // if(a==0 && big>=b){
+        //     return true;
+        // }
+        // else if(small>=goal){
+        //     return true;
+        // }
+        // else if(goal-(b*5)<=small){
+        //     return true;
+        // }
+        // else if(goal-(b*5)>=small){
+        //     return false;
+        // }
+        // else if((double) (goal-small)/5 <= big){
+        //     return true;
+        // }
+        // return false;
     }
 
     public static void main(String[]args){
         CondEx ce = new CondEx();
         // leap year
+        System.out.println("\nLeap year:");
         System.out.println("2000 " + ce.isLeapYear(2000));
         System.out.println("2004 " + ce.isLeapYear(2004));
         System.out.println("2003 " + ce.isLeapYear(2003));
         System.out.println("2100 " + ce.isLeapYear(2100));
 
         // is sooner
-        System.out.println("isSooner");
+        System.out.println("\nisSooner:");
         System.out.println("1/2/2010 is sooner than 1/2/2011 " + ce.isSooner(1,2,2010, 1,2,2011));
         System.out.println("2/1/2011 is sooner than 2/2/2010 " + ce.isSooner(2,1,2011, 2,2,2010));
         System.out.println("1/2/2011 is sooner than 2/2/2010 " + ce.isSooner(1,2,2011, 2,2,2010));
@@ -75,6 +137,7 @@ public class CondEx{
 
 
         // Best Fit
+        System.out.println("\nBest fit:");
         System.out.println("Best Fit");
         System.out.println("Find Best fit 6 2 3 is " + ce.findBestFit(6,2,3));
         System.out.println("Find Best fit 6 4 3 is " + ce.findBestFit(6,4,3));
@@ -87,6 +150,7 @@ public class CondEx{
 
 
         // Make Bench
+        System.out.println("\nMake Benches:");
         System.out.println("Make benches 3 1 8 is " + ce.makeBenches(3,1,8));
         System.out.println("Make benches 3 1 9 is " + ce.makeBenches(3,1,9));
         System.out.println("Make benches 11 1 15 is " + ce.makeBenches(11,1,15));
