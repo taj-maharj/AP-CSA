@@ -1,10 +1,8 @@
+//Arjun Mahajan 4B
 public class CondEx{
-    //Arjun Mahajan
-
     public boolean isLeapYear(int year){
         return (year%4==0 && (year%100!=0 || year%400 == 0));
     }
-
     public boolean isSooner(int month1, int day1, int year1, int month2, int day2, int year2){
         if(year1<year2){
             return true;
@@ -27,7 +25,6 @@ public class CondEx{
         }
         return false;
     }
-
     public int findBestFit(int space, int size1, int size2){
         /*space is the amount of available space on a memory card.  size1 and size2 are the sizes of two files.  
         Write a method that takes these integer numbers as parameters and figures out the largest combinations of files that fits on the card.  
@@ -44,17 +41,26 @@ public class CondEx{
         }
         return 2;
     }
-
     public boolean makeBenches(int small, int big, int goal){
         if(big == 0){
             return small>=goal;
         }
         else if(small == 0){
-            return goal%5==0 && (double) goal/5<big;
+            return goal%5==0 && ((double) goal/5) <= big;
         }
-        else if(goal/5<=big && goal%5 <= small){
+        else if(big*5+small == goal){
             return true;
         }
+        else if(big*5+small < goal){
+            return false;
+        }
+        else if(goal - goal/5*5 <= small){
+            return true;
+        }
+        else if((double) goal/5 <= big && goal%5 <= small){
+            return true;
+        }
+
         
         return false;
 
