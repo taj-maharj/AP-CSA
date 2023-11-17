@@ -10,7 +10,7 @@ public class TwoSpinners{
   	*/
  	public int spin(int min, int max)
  	{
-     	    return (int) Math.random()*(max-min)+min+1;
+     	    return (int) (Math.random()*(max-min))+min;
  	}
  	/** Simulates one round of the game as described in part (b).
   	*/
