@@ -24,7 +24,16 @@ public class StringsExercises{
     public String convertDate2(String datestr){
         int slash = datestr.indexOf("/");
         int slash1 = datestr.lastIndexOf("/");
-        return datestr.substring(slash+1,slash1)+"-"+datestr.substring(0, slash)+"-"+datestr.substring(slash1+1);
+        String month = datestr.substring(0, slash);
+        if(month.length()<2){
+            month = 0+month;
+        }
+        String day = datestr.substring(slash+1, slash1);
+        if (day.length()<2) day = 0+day;
+
+        String year = datestr.substring(slash1+1);
+
+        return day+"-"+month+"-"+year;
     }
 
     public boolean startsWith(String s, String prefix){
@@ -57,8 +66,9 @@ public class StringsExercises{
         System.out.println("\nnegative");
         System.out.println(se.negative("0010111001"));
         System.out.println(se.negative("11111111"));
-        System.out.println("\nconvertDate2");
+        System.out.println("\nconvertDate");
         System.out.println("04/20/2014 becomes " + se.convertDate("04/20/2014"));
+        System.out.println("\nConvertDate2");
         System.out.println("04/20/2014 becomes " + se.convertDate2("04/20/2014"));
         System.out.println("4/20/2014 becomes " + se.convertDate2("4/20/2014"));
         System.out.println("04/2/2014 becomes " + se.convertDate2("04/2/2014"));
