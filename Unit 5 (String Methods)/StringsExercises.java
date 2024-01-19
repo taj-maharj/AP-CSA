@@ -1,3 +1,4 @@
+
 public class StringsExercises{
     public String scroll(String s){
         return s.substring(1)+s.charAt(0);

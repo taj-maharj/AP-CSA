@@ -1,3 +1,4 @@
+package StringsFRQ;
 public class ErrorLog {
 
     private String machineId;
@@ -13,21 +14,10 @@ public class ErrorLog {
      * contains keyword; false otherwise.
      */
     public boolean containsKey(String keyword){
-        int indexOfKeyword = description.indexOf(keyword);
-        int indexOfEndOfKeyword = description.indexOf(keyword)+keyword.length()-1;
-
         if(description.indexOf(keyword)==-1) return false;
-        if(description.substring(0,keyword.length()).equals(keyword)){
-            boolean spaceAfter = description.substring(indexOfEndOfKeyword,indexOfEndOfKeyword+1).equals(" ");
-            if(spaceAfter == true) return true;
-        }
-        if(description.substring(description.length()-1-keyword.length()-1).equals(keyword)){
-            boolean spaceBefore = description.substring(indexOfKeyword-1,indexOfKeyword).equals(" ");
-            if(spaceBefore==true) return true;
-        }
-        boolean spaceAfter = description.substring(indexOfEndOfKeyword,indexOfEndOfKeyword+1).equals(" ");
-        boolean spaceBefore = description.substring(indexOfKeyword-1,indexOfKeyword).equals(" ");
-        if(spaceAfter == true && spaceBefore == true) return true;
+        if(description.indexOf(keyword + " ") == 0) return true;
+        if(description.indexOf(" " + keyword) == description.length()-keyword.length()-1) return true;
+        if(description.indexOf(" " + keyword + " ") != -1) return true;
         return false;
     }
  
@@ -51,7 +41,7 @@ public class ErrorLog {
 		System.out.println("message 5 " + er5.containsKey("disk"));
 		System.out.println("message 6 " + er6.containsKey("disk"));
 		System.out.println("message 6 " + er6.containsKey("error"));
-		// System.out.println("message 7 " + er7.containsKey("disk"));
+		System.out.println("message 7 " + er7.containsKey("disk"));
 		
 
 	}
