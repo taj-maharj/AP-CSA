@@ -21,19 +21,13 @@ public class Sentence {
 	 * Postcondition: the current sentence if not modified.
 	 */
 	public int findNthTime(String str, int n) {
-        String tempString = currSent;
-        int itteration = 1;
+		int ind = currSent.indexOf(str);
         for(int i = 1; i<=n;i++){
-            if(n== 1) return tempString.indexOf(str);
-            if(itteration==n){
-				if(tempString.indexOf(str) == -1) return -1;
-				return tempString.indexOf(str)+((itteration-1)*str.length());
-			}
-            if(tempString.indexOf(str) == -1) return -1;
-            tempString = tempString.substring(0, tempString.indexOf(str)) + tempString.substring(tempString.indexOf(str)+str.length());
-            itteration++;
+            if(n==1) return ind;
+			else if (ind != -1) ind = currSent.indexOf(str, ind+str.length()-1);
+			else return -1;
         }
-        return -1;
+        return ind;
 	}
 
 	/** Modifies the current sentence by replacing the nth occurrence of str with repl
@@ -41,11 +35,11 @@ public class Sentence {
 	 * Precondition: str.length() > 0 and n > 0
 	 *
 	 */
-	public String replaceNthTime(String str, int n, String repl) {
+	public void replaceNthTime(String str, int n, String repl) {
         int index = findNthTime(str, n);
-        if(index == -1) return currSent;
-		System.out.println(currSent.substring(0, index) + repl + currSent.substring(index+str.length()));
-		return currSent.substring(0, index) + repl + currSent.substring(index+str.length());
+        if(index != -1){
+		currSent =  currSent.substring(0, index) + repl + currSent.substring(index+str.length());
+		}
 	}
 
 	/** Returns the index of the last occurrence of str in the current sentence:
@@ -54,8 +48,14 @@ public class Sentence {
 	 * Postcondition: the current sentence is not modified.
 	 */
 	public int findLastTime(String str) {
-		/* part c - you must call findNthTime here */
-		return -1;  // replace this
+		if(findNthTime(str, 1)==-1) return -1;
+		int c = 1;
+		int res = 1;
+		while(res != -1) {
+			res = findNthTime(str, c);
+			c++;
+		}
+		return findNthTime(str, c--);
 	}
 
 	public static void main(String[] args) {
