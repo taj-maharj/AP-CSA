@@ -22,12 +22,15 @@ public class Sentence {
 	 */
 	public int findNthTime(String str, int n) {
 		int ind = currSent.indexOf(str);
-        for(int i = 1; i<=n;i++){
-            if(n==1) return ind;
-			else if (ind != -1) ind = currSent.indexOf(str, ind+str.length()-1);
-			else return -1;
-        }
-        return ind;
+        for (int i = 2; i <= n; i++) {
+			if (n == 1)
+				return ind;
+			else if (ind != -1) {
+				ind = currSent.indexOf(str, ind + str.length() - 1);
+			} else
+				return -1;
+		}
+		return ind;
 	}
 
 	/** Modifies the current sentence by replacing the nth occurrence of str with repl
@@ -49,13 +52,14 @@ public class Sentence {
 	 */
 	public int findLastTime(String str) {
 		if(findNthTime(str, 1)==-1) return -1;
-		int c = 1;
+		int c = 0;
 		int res = 1;
 		while(res != -1) {
-			res = findNthTime(str, c);
 			c++;
+			res = findNthTime(str, c);
+			//System.out.println(findNthTime(str, c));
 		}
-		return findNthTime(str, c--);
+		return findNthTime(str, c-1);
 	}
 
 	public static void main(String[] args) {
@@ -92,11 +96,12 @@ public class Sentence {
 		System.out.println(sentence5.findNthTime("aaa", 2));
 		sentence5.replaceNthTime("aaa", 2, "bbb");
 		System.out.println(sentence5);
+		System.out.println();
 		
-		// Sentence sentence6 = new Sentence("A cat ate late.");
-		// System.out.println(sentence6.findLastTime("at"));
-		// System.out.println(sentence6.findLastTime("cat"));
-		// System.out.println(sentence6.findLastTime("bat"));
+		Sentence sentence6 = new Sentence("A cat ate late.");
+		System.out.println(sentence6.findLastTime("at"));
+		System.out.println(sentence6.findLastTime("cat"));
+		System.out.println(sentence6.findLastTime("bat"));
 	}
 
 }
