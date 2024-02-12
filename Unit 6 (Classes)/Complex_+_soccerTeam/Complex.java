@@ -29,22 +29,38 @@ public class Complex{
     }
 
     public Complex mult(Complex other){
-        double z = ((this.a*other.a)+(this.b*other.b)*(-1));
-        double y = ((this.a*other.b)+(this.b*other.a));
+        double z = (this.a*other.a)-(this.b*other.b);
+        double y = (this.a*other.b)+(this.b*other.a);
         return new Complex(z,y);
     }
 
     public Complex mult(double x){
-        return new Complex((this.a*x)+(this.b*x));
+        return new Complex((this.a*x),(this.b*x));
     }
 
     public static void main(String[] args){
-        Complex c = new Complex(4,5);
-        Complex x = new Complex(2.5,8.9343);
-        System.out.println(c.abs());
-        System.out.println(x.abs()+"\n");
-        System.out.println(c.add(x));
-        System.out.println(x.add(c)+"\n");
-        System.out.println(c.mult(x));
+        Complex one = new Complex(4.3,5.3);
+        Complex two = new Complex(5.5, 6.24);
+
+        Complex three= new Complex(-5, 10);
+        Complex four= new Complex(0.1, -4);
+
+        Complex five = new Complex(1,0);
+        Complex six = new Complex(0,1);
+
+        System.out.println("testing abs");
+        System.out.println(one.abs());
+        System.out.println(two.abs()+"\n");
+
+        System.out.println("Testing add");
+        System.out.println(three.add(2));
+        System.out.println(four.add(1));
+        System.out.println(three.add(four));
+
+        System.out.println("\nTesting Multiply");
+        System.out.println(five.mult(0));
+        System.out.println(six.mult(10));
+        System.out.println(five.mult(six));
+
     }
 }
