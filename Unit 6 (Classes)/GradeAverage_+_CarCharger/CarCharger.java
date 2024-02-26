@@ -14,11 +14,11 @@ public class CarCharger {
         System.out.println("0, 2, " +cc.getChargingCost(0, 2));
         System.out.println("22, 7, " + cc.getChargingCost(22, 7));
         System.out.println("22, 30, " + cc.getChargingCost(22,30));
-        // System.out.println("Best start Time");
-        // System.out.println("1 " + cc.getChargeStartTime(1));
-        // System.out.println("2 " + cc.getChargeStartTime(2));
-        // System.out.println("7 " + cc.getChargeStartTime(7));
-        // System.out.println("30 " + cc.getChargeStartTime(30));
+        System.out.println("Best start Time");
+        System.out.println("1 " + cc.getChargeStartTime(1));
+        System.out.println("2 " + cc.getChargeStartTime(2));
+        System.out.println("7 " + cc.getChargeStartTime(7));
+        System.out.println("30 " + cc.getChargeStartTime(30));
 
 
     }
@@ -36,27 +36,10 @@ public class CarCharger {
      */
     public int getChargingCost(int startHour, int numHours){
         int sum = 0;
-        for(int i = startHour; i<= startHour+numHours; i++){
+        for(int i = startHour; i< startHour+numHours; i++){
             sum+=rateTable[i%23];
         }
-        
         return sum;
-        // int sum = 0;
-        // if(startHour+numHours>=24){
-        //     for(int i = startHour; i<=23; i++){
-        //         sum+=rateTable[i];
-        //     }
-        //     for(int i = 0; i<=(startHour+numHours)-23*(numHours/23); i++){
-        //         System.out.println(i);
-        //         sum+=rateTable[i];
-        //     }
-        // }
-        // else{
-        //     for(int i = startHour; i<=startHour+numHours; i++){
-        //         sum+=rateTable[i];
-        //     }
-        // }
-        // return sum;
     }
 
     /** Determines the start time to charge the car at the
@@ -66,8 +49,15 @@ public class CarCharger {
      * @return an optimal start time with 0 <= returned value <= 23
      */
     public int getChargeStartTime(int hours){
-        
-        return -1;   //replace this
+        int optimalChargingCost = getChargingCost(0, hours);
+        int optimalChargingCostIndex = 0;
+        for(int i = 0; i<= rateTable.length-1; i++){
+            if(getChargingCost(i, hours)<optimalChargingCost){
+                optimalChargingCost = getChargingCost(i, hours);
+                optimalChargingCostIndex = i;
+            }
+        }
+        return optimalChargingCostIndex;
     }
 
 }
