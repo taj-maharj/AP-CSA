@@ -26,14 +26,11 @@ public class WordPuzzle {
      
     public boolean toBeLabeled(int r, int c, boolean [][] blackBoxes){
         if(blackBoxes[r][c]==true) return false;
-        else if(r==0 && c==0){
+        else if(r==0 || c==0){
             return true;
         }
-        else if(r==0){
-            return (blackBoxes[r][c-1]==true);
-        }
-        else if(c==0){
-            return (blackBoxes[r-1][c]==true);
+        else if((blackBoxes[r][c-1]==false) && (blackBoxes[r-1][c]==false)){
+            return false;
         }
         else{
             return ((blackBoxes[r][c-1]==true) || (blackBoxes[r-1][c]==true));
@@ -54,7 +51,7 @@ public class WordPuzzle {
      * - The Box object at row r, column c, in the word puzzle grid
      * is black if and only if blackBoxes[r][c] is true.
      * - The boxes in the puzzle are labeled according to the word
-     * puzzle labeling rule.
+     * puzzle labeling rule.`
      * @param blackBoxes - a 2D array of Boxes
      */
     public WordPuzzle(boolean [][] blackBoxes){
@@ -65,6 +62,9 @@ public class WordPuzzle {
                 if(toBeLabeled(r, c, blackBoxes)){
                     puzzle[r][c] = new Box(false, num);
                     num++;
+                }
+                else if(!blackBoxes[r][c]){
+                    puzzle[r][c] = new Box(false, 0);
                 }
                 else{
                     puzzle[r][c] = new Box(true, num);
