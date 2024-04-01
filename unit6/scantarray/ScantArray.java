@@ -103,33 +103,36 @@ public class ScantArray {
         sa1.addEntry(3,1,-9);
         sa1.addEntry(1,1,5);
 
-        // System.out.println("value at (2,0)= " + sa1.getValueAt(2,0));
-        // System.out.println("value at (3,1)= "+sa1.getValueAt(3,1));
-        // System.out.println("value at (2,3)= "+sa1.getValueAt(2,3));
-        // System.out.println("rows: "+ sa1.getNumRows());
-        // System.out.println("columns: "+ sa1.getNumColumns());
+        System.out.println("value at (2,0)= " + sa1.getValueAt(2,0));
+        System.out.println("value at (3,1)= "+sa1.getValueAt(3,1));
+        System.out.println("value at (2,3)= "+sa1.getValueAt(2,3));
+        System.out.println("rows: "+ sa1.getNumRows());
+        System.out.println("columns: "+ sa1.getNumColumns());
 
         System.out.println(sa1);
-        // System.out.println(sa1.getValueAt(3, 1));
+        System.out.println(sa1.getValueAt(3, 1));
         sa1.removeColumn(1);
-        // System.out.println(sa1.getValueAt(3, 1));
+        System.out.println(sa1.getValueAt(3, 1));
         System.out.println(sa1);
 
         /******* My OWN TEST CASE *******/
-        // ScantArray sa2 = new ScantArray(2,2);
-        // sa2.addEntry(0, 0, 12);
-        // sa2.addEntry(0, 1, 1);
-        // sa2.addEntry(1, 0, 7);
-        // sa2.addEntry(1, 1, 3);
+        System.out.println("\nNEW TEST CASE\n");
+        ScantArray sa2 = new ScantArray(2,2);
+        sa2.addEntry(0, 0, 12);
+        sa2.addEntry(0, 1, 1);
+        sa2.addEntry(1, 0, 7);
+        sa2.addEntry(1, 1, 3);
 
-        // System.out.println(sa2);
-
-        // System.out.println("valueAt");
-        // System.out.println("value at (2,0)= " + sa2.getValueAt(2,0));
-        // System.out.println("value at (0,0)= " + sa2.getValueAt(0,0));
-
-        // System.out.println("\nRemoving column 1");
-        // sa2.removeColumn(1);
-        // System.out.println(sa2);
+        System.out.println("valueAt");
+        System.out.println("value at (1,0)= " + sa2.getValueAt(1,0));
+        System.out.println("value at (1,1)= " + sa2.getValueAt(1,1));
+        System.out.println("value at (0,0)= " + sa2.getValueAt(0,0));
+        System.out.println("value at (0,1)= " + sa2.getValueAt(0,1));
+        System.out.println("\nSa2:");
+        System.out.println(sa2);
+        System.out.println("\nRemoving column 1\n");
+        sa2.removeColumn(1);
+        System.out.println("Sa2:");
+        System.out.println(sa2);
     }
 }
