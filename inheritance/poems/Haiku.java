@@ -11,7 +11,7 @@ public class Haiku extends Poem{
     }
 
     public void printRhythm(){
-        for (int rows = 0; rows < getNumlines(); rows++) {
+        for (int rows = 1; rows <= getNumlines(); rows++) {
             for (int syllables = 0; syllables<getSyllables(rows)-1; syllables++) {
                 System.out.print("ta-");
             }
