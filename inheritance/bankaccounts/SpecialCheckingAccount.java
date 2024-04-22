@@ -4,10 +4,10 @@ public class SpecialCheckingAccount extends CheckingAccount{
     private double minimumBalance;
     private double interestRate;
 
-    public SpecialCheckingAccount(int idNumber, double startBal, double cc, double intR, double minB){
+    public SpecialCheckingAccount(int idNumber, double startBal, double cc, double interestR, double minB){
         super(idNumber, startBal, cc);
         minimumBalance = minB;
-        interestRate = intR;
+        interestRate = interestR;
     }
     @Override
     public void clearCheck(double amount) {
@@ -18,6 +18,6 @@ public class SpecialCheckingAccount extends CheckingAccount{
     @Override
     public double monthlyInterest() {
         if (currentBalance()>minimumBalance) return currentBalance()*interestRate/12d;
-        return 1.0;
+        else return super.monthlyInterest();
     }
 }

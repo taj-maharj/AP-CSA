@@ -12,6 +12,6 @@ public class SavingsAccount extends Account{
     }
 
     public void withdraw(double withdrawnMoney){
-        if(currentBalance()>withdrawnMoney) decreaseBalance(withdrawnMoney);
+        if(currentBalance()>=withdrawnMoney) decreaseBalance(withdrawnMoney);
     }
 }
